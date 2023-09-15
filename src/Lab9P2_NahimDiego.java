@@ -1,3 +1,6 @@
+
+import Clases.Dba;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -13,7 +16,11 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
      * Creates new form Lab9P2_NahimDiego
      */
     public Lab9P2_NahimDiego() {
+        
+        Dba database= new Dba("./TENRECORD1.mdb");
         initComponents();
+        
+      
     }
 
     /**
