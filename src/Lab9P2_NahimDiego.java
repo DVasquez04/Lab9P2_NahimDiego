@@ -1,5 +1,8 @@
 
 import Clases.Dba;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,7 +20,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
      */
     public Lab9P2_NahimDiego() {
         
-        Dba database= new Dba("./TENRECORD1.mdb");
+        
         initComponents();
         
       
@@ -168,6 +171,11 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jButton1.setText("Agregar Registro");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -382,6 +390,19 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        database.conectar();
+        try {
+            database.query.executeUpdate("insert into TenRecord (\""+jt_OrderId.getText()+"\",\""+jt_OrderDate.getText()+"\",\""+jt_ShipDate.getText()+"\",\""+jt_ShipMode.getText()+"\",\""+jt_CostumerId.getText()+"\",\""+jt_CostumerName.getText()+
+                    "\",\""+jt_Segment.getText()+"\",\""+jt_Country.getText()+"\",\""+jt_City.getText()+"\",\""+jt_State.getText()+"\",\""+jt_PostalCode.getText()+"\",\""+jt_Region.getText()+"\",\""+jt_ProductId.getText()+"\",\""+jt_Category.getText()+
+                    "\",\""+jt_SubCategory.getText()+"\",\""+jt_ProductName.getText()+"\",\""+jt_Sales.getText()+"\",\""+jt_Quantity.getText()+"\",\""+jt_Discount.getText()+"\",\""+jt_Profit.getText()+"\")");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        database.desconectar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -416,7 +437,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             }
         });
     }
-
+    Dba database= new Dba("./TENRECORD1.mdb");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
