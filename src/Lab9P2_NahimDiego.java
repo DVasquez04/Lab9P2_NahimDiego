@@ -81,7 +81,18 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
         jl_OrderId19 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TP_listar = new javax.swing.JTextPane();
+        jb_Orders = new javax.swing.JButton();
+        jb_Details = new javax.swing.JButton();
+        jb_Costumers = new javax.swing.JButton();
+        jb_Products = new javax.swing.JButton();
+        jb_Clear = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JT_EliminarRegistro = new javax.swing.JTable();
+        jb_UpdateTabla = new javax.swing.JButton();
+        jb_EliminarRegistro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -343,30 +354,120 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 255));
 
+        jScrollPane1.setViewportView(TP_listar);
+
+        jb_Orders.setBackground(new java.awt.Color(0, 204, 0));
+        jb_Orders.setForeground(new java.awt.Color(0, 0, 0));
+        jb_Orders.setText("Orders");
+
+        jb_Details.setBackground(new java.awt.Color(255, 255, 0));
+        jb_Details.setForeground(new java.awt.Color(0, 0, 0));
+        jb_Details.setText("Details");
+        jb_Details.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_DetailsActionPerformed(evt);
+            }
+        });
+
+        jb_Costumers.setBackground(new java.awt.Color(255, 51, 51));
+        jb_Costumers.setForeground(new java.awt.Color(0, 0, 0));
+        jb_Costumers.setText("Costumers");
+
+        jb_Products.setBackground(new java.awt.Color(51, 51, 255));
+        jb_Products.setForeground(new java.awt.Color(0, 0, 0));
+        jb_Products.setText("Products");
+
+        jb_Clear.setForeground(new java.awt.Color(0, 0, 0));
+        jb_Clear.setText("Clear");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jb_Orders, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jb_Details, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(jb_Costumers, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(jb_Products, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_Clear)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_Orders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_Details)
+                    .addComponent(jb_Costumers)
+                    .addComponent(jb_Products)
+                    .addComponent(jb_Clear))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         jTabbedPane1.addTab("Listar Registro", jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
 
+        JT_EliminarRegistro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Row ID", "Order ID", "Order Date", "Costumer ID", "Country", "City", "Product ID", "Sales"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(JT_EliminarRegistro);
+
+        jb_UpdateTabla.setForeground(new java.awt.Color(0, 0, 0));
+        jb_UpdateTabla.setText("Update Tabla");
+
+        jb_EliminarRegistro.setForeground(new java.awt.Color(0, 0, 0));
+        jb_EliminarRegistro.setText("Eliminar Registro");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jb_UpdateTabla)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jb_EliminarRegistro)
+                .addGap(14, 14, 14))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_UpdateTabla)
+                    .addComponent(jb_EliminarRegistro))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar Registro", jPanel3);
@@ -398,6 +499,10 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
       ba.AgregarRegistro();
        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jb_DetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_DetailsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_DetailsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,11 +540,22 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
     }
     Dba database= new Dba("./TENRECORD1.accdb");
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable JT_EliminarRegistro;
+    private javax.swing.JTextPane TP_listar;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton jb_Clear;
+    private javax.swing.JButton jb_Costumers;
+    private javax.swing.JButton jb_Details;
+    private javax.swing.JButton jb_EliminarRegistro;
+    private javax.swing.JButton jb_Orders;
+    private javax.swing.JButton jb_Products;
+    private javax.swing.JButton jb_UpdateTabla;
     private javax.swing.JLabel jl_Country;
     private javax.swing.JLabel jl_OrderDate;
     private javax.swing.JLabel jl_OrderId;
