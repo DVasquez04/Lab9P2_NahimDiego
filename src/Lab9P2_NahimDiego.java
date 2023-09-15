@@ -1,4 +1,5 @@
 
+import Clases.BotonAgregar;
 import Clases.Dba;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -392,15 +393,10 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        database.conectar();
-        try {
-            database.query.executeUpdate("insert into TenRecord (\""+jt_OrderId.getText()+"\",\""+jt_OrderDate.getText()+"\",\""+jt_ShipDate.getText()+"\",\""+jt_ShipMode.getText()+"\",\""+jt_CostumerId.getText()+"\",\""+jt_CostumerName.getText()+
-                    "\",\""+jt_Segment.getText()+"\",\""+jt_Country.getText()+"\",\""+jt_City.getText()+"\",\""+jt_State.getText()+"\",\""+jt_PostalCode.getText()+"\",\""+jt_Region.getText()+"\",\""+jt_ProductId.getText()+"\",\""+jt_Category.getText()+
-                    "\",\""+jt_SubCategory.getText()+"\",\""+jt_ProductName.getText()+"\",\""+jt_Sales.getText()+"\",\""+jt_Quantity.getText()+"\",\""+jt_Discount.getText()+"\",\""+jt_Profit.getText()+"\")");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        database.desconectar();
+      Clases.BotonAgregar ba= new BotonAgregar();
+      
+      ba.AgregarRegistro();
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -437,7 +433,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             }
         });
     }
-    Dba database= new Dba("./TENRECORD1.mdb");
+    Dba database= new Dba("./TENRECORD1.accdb");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
