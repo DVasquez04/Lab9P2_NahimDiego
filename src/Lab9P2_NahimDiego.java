@@ -1,6 +1,8 @@
 
 import Clases.BotonAgregar;
 import Clases.Dba;
+import Clases.ProgresBar;
+import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -22,7 +24,10 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
     /**
      * Creates new form Lab9P2_NahimDiego
      */
+    ProgresBar barra= new ProgresBar();
     public Lab9P2_NahimDiego() {
+        
+        
         
         initComponents();
         
@@ -95,6 +100,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
         JT_EliminarRegistro = new javax.swing.JTable();
         jb_UpdateTabla = new javax.swing.JButton();
         jb_EliminarRegistro = new javax.swing.JButton();
+        pg = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -243,7 +249,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
                                 .addComponent(jl_OrderId4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jt_CostumerId, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                                 .addComponent(jl_OrderId5)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +280,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
                             .addComponent(jt_City, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jt_Region, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -352,7 +358,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
                     .addComponent(jt_Discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_OrderId19)
                     .addComponent(jt_Profit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
@@ -426,7 +432,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
                         .addComponent(jb_Products, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jb_Clear)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,7 +492,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 934, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
@@ -509,20 +515,21 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Eliminar Registro", jPanel3);
 
-        jp_Fondo.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 820, 560));
+        jp_Fondo.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 940, 590));
+        jp_Fondo.add(pg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 840, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jp_Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jp_Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 978, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jp_Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jp_Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -560,6 +567,9 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         db.desconectar();
+         barra= new ProgresBar(Color.ORANGE, 5000, pg);
+        barra.start();
+        barra.setAvanzar(true);
     }//GEN-LAST:event_jb_DetailsActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -591,10 +601,15 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
                     + " ([Order ID], [Order Date], [Ship Date], [Ship Mode], [Customer ID], [Customer Name], [Segment], [Country], [City], [State], [Postal Code], [Region], [Product ID], [Category], [Sub-Category], [Product Name], [Sales], [Quantity], [Discount], [Profit])"
                     + " VALUES ('" + orderID + "', '" + OrderDate +"', '"+ ShipDate +"', '"+ ShipMode+"', '"+ CostumerID+"', '"+ CostumerName+"', '"+ Segment +"', '"+ Country +"', '"+ City +"', '"+ State +"', '"+ PostalCode +"', '"+ Region +"', '"+ ProductID +"', '"+ Category +"', '"+ SubCategory +"', '"+ ProductName+"', '"+ Sales +"', '"+ Quantity +"', '"+ Discount +"', '"+ Profit +"')");
                     database.commit();
+                     JOptionPane.showMessageDialog(this, "Registro Agregado Exitosamente! ");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         database.desconectar();
+         barra= new ProgresBar(Color.YELLOW, 6000, pg);
+        barra.start();
+        barra.setAvanzar(true);
+        barra.setAvanzar(false);
 
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -623,6 +638,10 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         db.desconectar();
+         barra= new ProgresBar(Color.GREEN, 4000, pg);
+        barra.start();
+        barra.setAvanzar(true);
+       
     }//GEN-LAST:event_jb_OrdersActionPerformed
 
     private void jb_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ClearActionPerformed
@@ -657,6 +676,9 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         db.desconectar();
+         barra= new ProgresBar(Color.RED, 6000, pg);
+        barra.start();
+        barra.setAvanzar(true);
     }//GEN-LAST:event_jb_CostumersActionPerformed
 
     private void jb_ProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ProductsActionPerformed
@@ -682,6 +704,9 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         db.desconectar();
+        barra= new ProgresBar(Color.BLUE, 3000, pg);
+        barra.start();
+        barra.setAvanzar(true);
     }//GEN-LAST:event_jb_ProductsActionPerformed
 
     private void jb_UpdateTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_UpdateTablaMouseClicked
@@ -700,13 +725,15 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
                  modelo.addRow(datos);
                  
                  JT_EliminarRegistro.setModel(modelo);
-                                
+                           
              }
            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         database.desconectar();
+                
+                
     }//GEN-LAST:event_jb_UpdateTablaMouseClicked
 
     private void jb_EliminarRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_EliminarRegistroMouseClicked
@@ -721,13 +748,20 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             database.commit();
             modelo.removeRow(JT_EliminarRegistro.getSelectedRow());
             JT_EliminarRegistro.setModel(modelo);
-            JOptionPane.showMessageDialog(this, "Elementos Eliminados Exitosamente! ");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error al eliminar :(");
            ex.printStackTrace();
         }
         
         database.desconectar();
+        barra= new ProgresBar(Color.MAGENTA, 5000, pg);
+        barra.start();
+        barra.setAvanzar(true);
+        
+        
+        
+        
+
     }//GEN-LAST:event_jb_EliminarRegistroMouseClicked
 
     /**
@@ -823,5 +857,6 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
     private javax.swing.JTextField jt_ShipMode;
     private javax.swing.JTextField jt_State;
     private javax.swing.JTextField jt_SubCategory;
+    private javax.swing.JProgressBar pg;
     // End of variables declaration//GEN-END:variables
 }
