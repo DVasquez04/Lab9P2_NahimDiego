@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -720,7 +721,9 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             database.commit();
             modelo.removeRow(JT_EliminarRegistro.getSelectedRow());
             JT_EliminarRegistro.setModel(modelo);
+            JOptionPane.showMessageDialog(this, "Elementos Eliminados Exitosamente! ");
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error al eliminar :(");
            ex.printStackTrace();
         }
         
