@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,7 +22,6 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
      * Creates new form Lab9P2_NahimDiego
      */
     public Lab9P2_NahimDiego() {
-        
         
         initComponents();
         
@@ -466,9 +466,19 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
 
         jb_UpdateTabla.setForeground(new java.awt.Color(0, 0, 0));
         jb_UpdateTabla.setText("Update Tabla");
+        jb_UpdateTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_UpdateTablaMouseClicked(evt);
+            }
+        });
 
         jb_EliminarRegistro.setForeground(new java.awt.Color(0, 0, 0));
         jb_EliminarRegistro.setText("Eliminar Registro");
+        jb_EliminarRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_EliminarRegistroMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -672,6 +682,50 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
         }
         db.desconectar();
     }//GEN-LAST:event_jb_ProductsActionPerformed
+
+    private void jb_UpdateTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_UpdateTablaMouseClicked
+       database.conectar();
+       try {
+            
+            database.query.execute("select [ID],[Order ID],[Order Date],[Customer ID],[Country],[City],[Product ID],[Sales] from TenRecord");
+            
+            ResultSet result = database.query.getResultSet();
+            
+             while (result.next()) {
+                 DefaultTableModel modelo= (DefaultTableModel)JT_EliminarRegistro.getModel();
+                 
+                 Object[] datos= {result.getString(1),result.getString(2),result.getString(3), result.getString(4),result.getString(5), result.getString(6), result.getString(7), result.getString(8)};
+                 
+                 modelo.addRow(datos);
+                 
+                 JT_EliminarRegistro.setModel(modelo);
+                                
+             }
+           
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        database.desconectar();
+    }//GEN-LAST:event_jb_UpdateTablaMouseClicked
+
+    private void jb_EliminarRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_EliminarRegistroMouseClicked
+        String Orderid= (String)JT_EliminarRegistro.getValueAt(JT_EliminarRegistro.getSelectedRow(), 1);
+        
+        database.conectar();
+        
+        try {
+            DefaultTableModel modelo= (DefaultTableModel) JT_EliminarRegistro.getModel();
+            database.query.execute("DELETE from TenRecord where [Order ID]='"+ Orderid +"'");
+          
+            database.commit();
+            modelo.removeRow(JT_EliminarRegistro.getSelectedRow());
+            JT_EliminarRegistro.setModel(modelo);
+        } catch (SQLException ex) {
+           ex.printStackTrace();
+        }
+        
+        database.desconectar();
+    }//GEN-LAST:event_jb_EliminarRegistroMouseClicked
 
     /**
      * @param args the command line arguments

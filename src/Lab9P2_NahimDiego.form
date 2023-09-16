@@ -753,6 +753,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Update Tabla"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_UpdateTablaMouseClicked"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jb_EliminarRegistro">
                   <Properties>
@@ -761,6 +764,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Eliminar Registro"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jb_EliminarRegistroMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
