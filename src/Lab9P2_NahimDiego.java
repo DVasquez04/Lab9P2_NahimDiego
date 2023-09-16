@@ -1,6 +1,7 @@
 
 import Clases.BotonAgregar;
 import Clases.Dba;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -364,6 +365,11 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
         jb_Orders.setBackground(new java.awt.Color(0, 204, 0));
         jb_Orders.setForeground(new java.awt.Color(0, 0, 0));
         jb_Orders.setText("Orders");
+        jb_Orders.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_OrdersActionPerformed(evt);
+            }
+        });
 
         jb_Details.setBackground(new java.awt.Color(255, 255, 0));
         jb_Details.setForeground(new java.awt.Color(0, 0, 0));
@@ -377,13 +383,28 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
         jb_Costumers.setBackground(new java.awt.Color(255, 51, 51));
         jb_Costumers.setForeground(new java.awt.Color(0, 0, 0));
         jb_Costumers.setText("Costumers");
+        jb_Costumers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_CostumersActionPerformed(evt);
+            }
+        });
 
         jb_Products.setBackground(new java.awt.Color(51, 51, 255));
         jb_Products.setForeground(new java.awt.Color(0, 0, 0));
         jb_Products.setText("Products");
+        jb_Products.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_ProductsActionPerformed(evt);
+            }
+        });
 
         jb_Clear.setForeground(new java.awt.Color(0, 0, 0));
         jb_Clear.setText("Clear");
+        jb_Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_ClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -505,6 +526,29 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
 
     private void jb_DetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_DetailsActionPerformed
         // TODO add your handling code here:
+        //details
+        Dba db = new Dba("./record.accdb");
+        db.conectar();
+        try {
+            db.query.execute("SELECT [Order ID],[Product ID],[Sales],[Quantity],[Discount],[Profit] from TenRecord");
+            ResultSet rs = db.query.getResultSet();
+            int i = 1;
+            String out = "";
+            while (rs.next()) {
+                out += "Record "+i+"\n";
+                out += "Order Id: "+rs.getString(1)+"\n";
+                out += "Product ID: "+rs.getString(2)+"\n";
+                out += "Sales: "+rs.getString(3)+"\n";
+                out += "Quantity: "+rs.getString(4)+"\n";
+                out += "Discount: "+rs.getString(5)+"\n";
+                out += "Profit: "+rs.getString(6)+"\n";
+                i++;
+            }
+            TP_listar.setText(out);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
     }//GEN-LAST:event_jb_DetailsActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -542,6 +586,92 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
         database.desconectar();
 
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jb_OrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_OrdersActionPerformed
+        // TODO add your handling code here:
+        //listar Orders
+        Dba db = new Dba("./record.accdb");
+        db.conectar();
+        try {
+            //seleccionar los orders; Order ID, Order Date, Ship Date, Ship Mode, Costumer ID
+            db.query.execute("SELECT [Order ID],[Order Date],[Ship Date],[Ship Mode],[Customer ID] from TenRecord");
+            ResultSet rs = db.query.getResultSet();
+            int i = 1;
+            String out = "";
+            while (rs.next()) {
+                out += "Record "+i+"\n";
+                out += "Order ID: "+rs.getString(1)+"\n";
+                out += "Order Date: "+rs.getString(2)+"\n";
+                out += "Ship Date: "+rs.getString(3)+"\n";
+                out += "Ship Mode: "+rs.getString(4)+"\n";
+                out += "Customer ID: "+rs.getString(5)+"\n";
+                i++;
+            }
+            TP_listar.setText(out);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }//GEN-LAST:event_jb_OrdersActionPerformed
+
+    private void jb_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ClearActionPerformed
+        // TODO add your handling code here:
+        TP_listar.setText("");
+    }//GEN-LAST:event_jb_ClearActionPerformed
+
+    private void jb_CostumersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_CostumersActionPerformed
+        // TODO add your handling code here:
+        //costumers listar
+        Dba db = new Dba("./record.accdb");
+        db.conectar();
+        try {
+            db.query.execute("SELECT [Customer ID],[Customer Name],[Segment],[Country],[City],[State],[Postal Code],[Region] from TenRecord");
+            ResultSet rs = db.query.getResultSet();
+            int i = 1;
+            String out = "";
+            while (rs.next()) {
+                out += "Record "+i+"\n";
+                out += "Costumer ID: "+rs.getString(1)+"\n";
+                out += "Costumer Name: "+rs.getString(2)+"\n";
+                out += "Segment: "+rs.getString(3)+"\n";
+                out += "Country: "+rs.getString(4)+"\n";
+                out += "City: "+rs.getString(5)+"\n";
+                out += "State: "+rs.getString(6)+"\n";
+                out += "Postal Code: "+rs.getString(7)+"\n";
+                out += "Region: "+rs.getString(8)+"\n";
+                i++;
+            }
+            TP_listar.setText(out);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }//GEN-LAST:event_jb_CostumersActionPerformed
+
+    private void jb_ProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_ProductsActionPerformed
+        // TODO add your handling code here:
+        //products listar
+        Dba db = new Dba("./record.accdb");
+        db.conectar();
+        try {
+            db.query.execute("SELECT [Product ID],[Category],[Sub-Category],[Product Name] from TenRecord");
+            ResultSet rs = db.query.getResultSet();
+            int i = 1;
+            String out = "";
+            while (rs.next()) {
+                out += "Record "+i+"\n";
+                out += "Product ID: "+rs.getString(1)+"\n";
+                out += "Category: "+rs.getString(2)+"\n";
+                out += "Sub-Category: "+rs.getString(3)+"\n";
+                out += "Product Name: "+rs.getString(4)+"\n";
+                i++;
+            }
+            TP_listar.setText(out);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        db.desconectar();
+    }//GEN-LAST:event_jb_ProductsActionPerformed
 
     /**
      * @param args the command line arguments
