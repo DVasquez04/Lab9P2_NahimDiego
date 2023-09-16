@@ -53,7 +53,7 @@
         <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="820" height="570"/>
+              <AbsoluteConstraints x="0" y="10" width="820" height="560"/>
             </Constraint>
           </Constraints>
 
@@ -256,7 +256,7 @@
                               <Component id="jl_OrderId19" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jt_Profit" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="122" max="32767" attributes="0"/>
+                          <EmptySpace pref="112" max="32767" attributes="0"/>
                           <Component id="jButton1" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
@@ -532,6 +532,7 @@
                     <Property name="text" type="java.lang.String" value="Agregar Registro"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
                   </Events>
                 </Component>
@@ -702,7 +703,7 @@
                               <Component id="jb_UpdateTabla" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jb_EliminarRegistro" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

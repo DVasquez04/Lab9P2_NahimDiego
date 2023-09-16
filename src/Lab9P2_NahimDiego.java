@@ -183,6 +183,11 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jButton1.setText("Agregar Registro");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -345,7 +350,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
                     .addComponent(jt_Discount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_OrderId19)
                     .addComponent(jt_Profit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
@@ -467,12 +472,12 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_UpdateTabla)
                     .addComponent(jb_EliminarRegistro))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar Registro", jPanel3);
 
-        jp_Fondo.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 570));
+        jp_Fondo.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 820, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -494,15 +499,49 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-      Clases.BotonAgregar ba= new BotonAgregar();
-      
-      ba.AgregarRegistro();
+     
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jb_DetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_DetailsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jb_DetailsActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        
+          database.conectar();
+        try {
+            String rowID= "11";
+            String orderID=jt_OrderId.getText();
+            String OrderDate= jt_OrderDate.getText();
+            String ShipDate= jt_ShipDate.getText();
+            String ShipMode= jt_ShipMode.getText();
+            String CostumerID= jt_CostumerId.getText();
+            String CostumerName= jt_CostumerName.getText();
+            String Segment= jt_Segment.getText();
+            String Country= jt_Country.getText();
+            String City= jt_City.getText();
+            String State= jt_State.getText();
+            String PostalCode= jt_PostalCode.getText();
+            String Region= jt_Region.getText();
+            String ProductID= jt_ProductId.getText();
+            String Category=jt_Category.getText();
+            String SubCategory= jt_SubCategory.getText();
+            String ProductName= jt_ProductName.getText();
+            String Sales= jt_Sales.getText();
+            String Quantity= jt_Quantity.getText();
+            String Discount= jt_Discount.getText();
+            String Profit= jt_Profit.getText();
+           database.query.execute("INSERT INTO TenRecord"
+                    + " ([Order ID], [Order Date], [Ship Date], [Ship Mode], [Customer ID], [Customer Name], [Segment], [Country], [City], [State], [Postal Code], [Region], [Product ID], [Category], [Sub-Category], [Product Name], [Sales], [Quantity], [Discount], [Profit])"
+                    + " VALUES ('" + orderID + "', '" + OrderDate +"', '"+ ShipDate +"', '"+ ShipMode+"', '"+ CostumerID+"', '"+ CostumerName+"', '"+ Segment +"', '"+ Country +"', '"+ City +"', '"+ State +"', '"+ PostalCode +"', '"+ Region +"', '"+ ProductID +"', '"+ Category +"', '"+ SubCategory +"', '"+ ProductName+"', '"+ Sales +"', '"+ Quantity +"', '"+ Discount +"', '"+ Profit +"');");
+                    database.commit();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        database.desconectar();
+
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -538,7 +577,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             }
         });
     }
-    Dba database= new Dba("./TENRECORD1.accdb");
+    Clases.Dba database= new Dba("./record.accdb");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable JT_EliminarRegistro;
     private javax.swing.JTextPane TP_listar;
