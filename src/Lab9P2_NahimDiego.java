@@ -511,7 +511,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
         
           database.conectar();
         try {
-            String rowID= "11";
+            
             String orderID=jt_OrderId.getText();
             String OrderDate= jt_OrderDate.getText();
             String ShipDate= jt_ShipDate.getText();
@@ -534,7 +534,7 @@ public class Lab9P2_NahimDiego extends javax.swing.JFrame {
             String Profit= jt_Profit.getText();
            database.query.execute("INSERT INTO TenRecord"
                     + " ([Order ID], [Order Date], [Ship Date], [Ship Mode], [Customer ID], [Customer Name], [Segment], [Country], [City], [State], [Postal Code], [Region], [Product ID], [Category], [Sub-Category], [Product Name], [Sales], [Quantity], [Discount], [Profit])"
-                    + " VALUES ('" + orderID + "', '" + OrderDate +"', '"+ ShipDate +"', '"+ ShipMode+"', '"+ CostumerID+"', '"+ CostumerName+"', '"+ Segment +"', '"+ Country +"', '"+ City +"', '"+ State +"', '"+ PostalCode +"', '"+ Region +"', '"+ ProductID +"', '"+ Category +"', '"+ SubCategory +"', '"+ ProductName+"', '"+ Sales +"', '"+ Quantity +"', '"+ Discount +"', '"+ Profit +"');");
+                    + " VALUES ('" + orderID + "', '" + OrderDate +"', '"+ ShipDate +"', '"+ ShipMode+"', '"+ CostumerID+"', '"+ CostumerName+"', '"+ Segment +"', '"+ Country +"', '"+ City +"', '"+ State +"', '"+ PostalCode +"', '"+ Region +"', '"+ ProductID +"', '"+ Category +"', '"+ SubCategory +"', '"+ ProductName+"', '"+ Sales +"', '"+ Quantity +"', '"+ Discount +"', '"+ Profit +"')");
                     database.commit();
         } catch (SQLException ex) {
             ex.printStackTrace();
